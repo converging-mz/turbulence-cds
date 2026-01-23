@@ -179,6 +179,7 @@ def sim_run(q3d0, c=0.5, rem_rate=0.8, epsilon=1.0, dt=0.001, t_start=0., t_end=
     
     q3d = q3d0
     qr = average_qr(q3d0, X, Y, Z, r3d)
+    qr2d = average2d_qr(q3d0, Y, Z, r2d)
     ell = ell_sim(t)
 
     with h5py.File(saveFilename, 'w') as f:
@@ -205,7 +206,6 @@ def sim_run(q3d0, c=0.5, rem_rate=0.8, epsilon=1.0, dt=0.001, t_start=0., t_end=
 
         f.create_dataset('qr_timestep0', data=qr)
         f.create_dataset('qr2d_timestep0', data=qr2d)
-        f.create_dataset('qr1d_timestep0', data=qr1d)
         f.create_dataset('ell', data=ell)
         f.create_dataset('q3d_start', data=q3d0)
         
@@ -231,11 +231,8 @@ def sim_run(q3d0, c=0.5, rem_rate=0.8, epsilon=1.0, dt=0.001, t_start=0., t_end=
     
 ## Set initial condition
 # import initial condition from experiment
-with h5py.File('IC_smallBlob_t1p85.h5', 'r') as f:
-    q3d0 = f['qr0_norm_e'][()]
-    r_norm_e = f['r_norm_e'][()]
-    
-    r_e = f['r_e'][()]
+with h5py.File('smallBlob/IC_smallBlob_t1p85.h5', 'r') as f:
+    q3d0 = f['q3d0'][()]
     L_e = f['L_e'][()]
     t0_e = f['t0_e'][()]
     tauq_e = f['tauq_e'][()]
@@ -243,7 +240,7 @@ with h5py.File('IC_smallBlob_t1p85.h5', 'r') as f:
     
 ## Prescribe integral length scale ell(t) (do not change)
 # import integral length scale from experiment
-with h5py.File('ell_e_filtered.h5', 'r') as f:
+with h5py.File('smallBlob/ell_e_filtered.h5', 'r') as f:
     t_ell_e = f['t_ell_e'][:] # in seconds
     ell_filtered_e = f['ell_filtered_e'][:]# Integral length scale in mm
 
@@ -261,4 +258,4 @@ rem_rate = 0.9
 
 
 ### Run!
-q3d_end, qr_end, qr2d_end = sim_run(q3d0, c=c_0, rem_rate=rem_rate, epsilon=epsilon_0, dt=0.0005, t_start=0., t_end=10., saveFilename=f'smallBlob_t1p85_intrEll_bl_sim_0_10.h5', saveInterval=20, model_name='simulation_bl_cds')
+q3d_end, qr_end, qr2d_end = sim_run(q3d0, c=c_0, rem_rate=rem_rate, epsilon=epsilon_0, dt=0.0005, t_start=0., t_end=1., saveFilename=f'smallBlob_t1p85_intrEll_bl_sim_0_1.h5', saveInterval=20, model_name='simulation_bl_cds')
