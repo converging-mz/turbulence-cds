@@ -1,7 +1,7 @@
 # CDS simulation for turbulence nonlinear diffusion and decay 
 
 ## Overview
-This repository contains simulation code for the Kolmogorov-Barenblatt turbulent energy balance equation in the paper **"Nonlinear Diffusion and Decay of an Expanding Turbulent Blob"**. [arXiv:2505.22737](https://arxiv.org/abs/2505.22737).
+This repository contains simulation code for the Kolmogorov-Barenblatt turbulent energy balance equation in the paper **"Nonlinear Diffusion and Decay of an Expanding Turbulent Blob"** (PNAS, 2026).
 
 ## Cell Dynamical System (CDS) Method
 Cell Dynamical System (CDS) is a split-step scheme for nonlinear PDEs. Each timestep is computed by:
