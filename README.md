@@ -9,17 +9,19 @@ Cell Dynamical System (CDS) is a split-step scheme for nonlinear PDEs. Each time
 2. a **coupling (spatial) update** that applies the nonlinear transport using an isotropic discrete Laplacian on the lattice.
 
 ## Quickstart
+Download and unzip "smallBlob.zip". Run:
 ```bash
 pip install numpy scipy numba h5py torch
 python cds_turbulence_3d_demo.py
 ```
 
-## Please cite
+## Citation
+If you use this code, please cite:
 ```bibtex
-@article{matsuzawa2025nonlinear,
+@article{matsuzawa2026nonlinear,
   title={Nonlinear Diffusion and Decay of an Expanding Turbulent Blob},
   author={Matsuzawa, Takumi and Zhu, Minhui and Goldenfeld, Nigel and Irvine, William},
-  journal={arXiv preprint arXiv:2505.22737},
-  year={2025}
+  journal={PNAS},
+  year={2026}
 }
 ```
